@@ -1,0 +1,170 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<openerp>
+	<data>
+
+<!--============VISTA DE LISTA AL INICIO DE EL MODULO=================-->
+
+
+		<record id="mrp_service_all_tree" model="ir.ui.view">
+			<field name="name">mrp_service.all.tree</field>
+			<field name="model">mrp_service.all</field>
+			<field name="arch" type="xml">
+			  <tree string="lista de servicios">
+				<field name="name"  />
+				<field name="fecha" />
+				<field name="state" />
+			
+			  </tree>
+			</field>
+		</record>
+
+
+<!--=====================FORMULARIO INICIO============================-->
+
+		<record id="mrp_service_all_form" model="ir.ui.view">
+			<field name="name">mrp_service.all.form</field>
+			<field name="model">mrp_service.all</field>
+		   	<field name="arch" type="xml">
+				<form string="formulario servicios" version="7.0">
+					<header>
+						<field name="state" widget="statusbar" />
+					</header>
+					<sheet>
+					<div>	 <h1>
+                        Orden de servicio 
+                    <field name="folio" /></h1>
+						<group col="4">
+							<field name="name" />
+							<field name="empresa" />
+							<field name="movimiento" />
+							<field name="centrodeservicio" />
+							<field name="datoscentrodeservicio" />
+							<field name="modelo_id" />
+						</group>
+						<group col="4">
+							<field name="garantia" />
+							<field name="nuevoingreso" />
+                            <field name="enviar" />
+							<field name="reparado" />
+							<field name="facturado" />
+						</group>
+                       </div>
+
+<!--============================VISTA LIBRO===========================-->
+
+						 <notebook>
+							<page string="Jefe de Area Cliente">
+		                        <form string="Jefe de Area Cliente" version="7.0">
+									<h2>Contacto Cliente</h2>
+									<group col="4">
+									<field name="clienteJefe" />
+									<field name="clienteNombre" />
+									<field name="clienteTelefono" />	
+						 		    <field name="clienteMovil" />
+						 		    <field name="clienteCorreo" />	
+						 		    <field name="clienteClave" />
+									</group>
+							      		<h2>Contacto Empresa</h2>
+		                            	<group col="4">
+										<field name="empresaJefe" />
+										<field name="empresaNombre" />
+										<field name="empresaTelefono" />
+						 		    	<field name="empresaMovil" />	
+						 		    	<field name="empresaCorreo" />	
+						 		        <field name="empresaClave" />  
+						 		    </group>	           
+							    </form>
+							</page>
+
+					<page string="Entrega">
+
+                        <form string="Contacto Empresa" version="7.0">
+                                <h2>Entrega Cliente</h2>
+								<group col="4">
+									<field name="clienteEntregaCargo" />
+									<field name="clienteEntregaNombre" />
+									<field name="clienteEntregaTelefono" />	
+						 		    <field name="clienteEntregaMovil" />
+						 		    <field name="clienteEntregaCorreo" />
+						 		    <field name="clienteEntregaClave" />
+								</group>				
+								
+								<h2>Recibe Personal de la Empresa</h2>
+		                      	<group col="4">
+									<field name="empresaNoEmpleado" />
+									<field name="empresaEntregaCargo" />
+									<field name="empresaEntregaNombre" />
+						 		   	<field name="empresaEntregaTelefono" />
+						 		   	<field name="empresaEntregaMovil" />
+						 		    <field name="empresaEntregaCorreo" /><field name="empresaEntregaFecha" />  
+						 		</group>	        					
+					    </form>
+					</page>
+
+					    <page string="Facturacion">
+                            <field name="factura_ids" >
+                            	<tree editable="buttom">
+                            		<field name="facproducto"  />
+									<field name="faccantidad" />
+									<field name="facpreciounitario" />
+									<field name="facimpuestos" domain="[('parent_id', '=', False), ('type_tax_use', '=', 'purchase')]" widget="many2many_tags"/>
+									<field name="facafacturar" />
+									<field name="facsubtotal" />
+                            	</tree>
+                            </field>
+                        </page>
+					    	 <page string="Notas">
+                            <field name="internal_notes" placeholder="Añadir notas de internas.."/>
+                            <field name="quotation_notes" placeholder="Añadir notas de presupuesto..."/>
+                        </page>
+					    </notebook>
+
+<!--===========================FIN VISTA LIBRO========================-->
+
+					</sheet>
+			   </form>
+			</field>
+		</record>
+
+
+ <!--     <record id="mrp_service_all_calendar" model="ir.ui.view">
+            <field name="name">mrp_service.all.calendar</field>
+            <field name="model">mrp_service.all</field>
+            <field name="arch" type="xml">
+                <calendar color="user_id" date_start="date_planned" string="Service Order">
+                     <field name="name"/>
+                    <field name="fecha"/>
+              
+               </calendar>
+          </field>
+        </record>
+-->
+<!--================================ACCION============================-->
+
+	<record id="mrp_service_all_action" model="ir.actions.act_window">
+			<field name="name">Servicios</field>
+			<field name="res_model">mrp_service.all</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+	</record>
+
+<!--=================================MENU=============================-->
+
+<menuitem id="mrp_service_all_menu" name="SERVICIOS"/>
+<menuitem id="submenu_mrp_service_all" parent="mrp_service_all_menu" name="Prueba del modulo" sequence="0"/>
+<menuitem id="submenu_mrp_service_all_action" parent="submenu_mrp_service_all" name="Ordenes de servicios" sequence="0" action="mrp_service_all_action"/>
+
+
+<!--=============================HERENCIA=============================
+
+<record id="herencia_flotilla" model="ir.ui.view">
+	<field name="name"> </field>
+	<field name="model"></field>
+	<field name="type">form</field>
+	<field name="inerit_id" ref="fleet.fleet_vehicle_form"/>
+	
+
+</record>-->
+
+	</data>
+</openerp>

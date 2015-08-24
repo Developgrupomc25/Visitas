@@ -1,0 +1,2 @@
+<menuitem id="submenu_mrp_service_all" parent="mrp_service_all_menu" name="garantia" secuence="0"/>
+<menuitem id="submenu_mrp_service_all_action" parent="submenu_mrp_service_all" name="garantia" secuence="1" action="mrp_service_all_action"/>
