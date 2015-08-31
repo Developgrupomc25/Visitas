@@ -117,11 +117,17 @@ class mrp_service_lines(osv.osv):
 	_name = 'mrp_service.lines'
 	_description = 'facturas'
 
-	
-	def cambio(self, cr, uid, ids,facproducto):
-		return {facproducto*2}
 
-	
+#	def cambio(self, cr, uid, ids,facproducto,faccantidad,facpreciounitario,context=None):
+#		vals={}
+#		empresa=self.pool.get('product.product').browse(cr,uid,ids,context)
+#		print(empresa.address_ids[facproducto].country_id.name)
+#		return{'value':vals}
+	def cambio(self, cr, uid, ids, faccantidad):
+		if not faccantidad:
+			print ('ptm')
+		return True 
+
 	_columns = {
 			'factu_id': fields.many2one('mrp_service.all','ID Referencia'),
 			'facproducto': fields.many2one('product.product','Producto'),	

@@ -1,4 +1,5 @@
 <?xml version = "1.0" encoding = "utf-8"?>
+<!--TEEE AMMO VALE <3 -->
 <openerp>
 	<data>
 <!--============VISTA DE LISTA AL INICIO DE EL MODULO=================-->
@@ -101,7 +102,7 @@
 					    <page string="INSPECCION">
                             <field name="factura_ids" >
                             	<tree editable="buttom">
-                            		<field name="facproducto" on_change="cambio(faccantidad)"/>
+                            		<field name="facproducto" on_change="cambio(faccproducto)"/>
 									<field name="faccantidad" />
 									<field name="facpreciounitario" />
 									<field name="facimpuestos" widget="many2many_tags"/>
