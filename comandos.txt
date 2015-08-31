@@ -1,0 +1,14 @@
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+
+
+git init
+git remote add origin https://github.com/Tinoco1/openerp2.git
+git add .
+git commit -m 'comentario'
+git push -u origin master
+ususario
+contraseña
+
+git checkout -B name //crea una branch con el nombre especificado
+git checkout name //cambia de branch

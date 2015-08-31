@@ -32,6 +32,15 @@ from tools.translate import _
 class mrp_service_all(osv.osv):
 	_name = 'mrp_service.all'
 	_description = 'Todas las ordenes de servicio'
+   
+#    def cambio_facturacion(self, cr, uid, id, facproducto):
+ #       """ On change of product it sets product quantity, tax account, name,
+  #       uom of product, unit price and price subtotal.
+    #     @parametro facproducto: es el nombre del prodyucto que recibe.
+     #   """ 
+      #  result={'facproducto': 1}
+       # return (result)
+   
 	_columns = {
 			'name' : fields.char('nombre del servicio', size = 25, help = 'Nombre del servicio', required = True),		
 			'empresa' : fields.char('Empresa', size = 25, help = 'Empresa'),	
@@ -70,16 +79,36 @@ class mrp_service_all(osv.osv):
 			'enviar': fields.boolean('Enviar'),
 			'reparado': fields.boolean('Reparado'),
 			'facturado': fields.boolean('Facturado'),
-			'internal_notes': fields.text('Internal Notes'),
-            'quotation_notes': fields.text('Quotation Notes'),
+			'facinternas_notas': fields.text('Notas internas'),
+            'facpresupuesto_notas': fields.text('Notas Presupuesto'),
 			'state': fields.selection([('draft','Borrador'),('confirmed','Confirmado'),('cancel','Cancelado')], 'Estado', readonly = True),
 			'factura_ids': fields.one2many('mrp_service.lines','factu_id','Facturacion de los servicios'),
 	        'modelo_id': fields.many2one('fleet.vehicle','Modelo',required = True),
 	        # 'pricelist_id': fields.many2one('product.pricelist', 'Pricelist', help='Pricelist of the selected partner.'),
+	        'produccion_ids': fields.one2many('mrp_service.produccion','produccion_id','Orden de produccion'),
+	        'produccion_fecha': fields.date('Fecha de la orden', required = True),
+			'produccion_zona': fields.char('Zona', size = 60),
+			'produccion_divicion':fields.char('Divicion', size = 60),
+			'produccion_area': fields.char('Area', size = 60),
+			'produccion_atencion':fields.char('Atencion', size = 60),
+			'produccion_cliente': fields.char('Cliente', size = 60, help = 'Cliente al que se le hace el servicio'),
+			'produccion_fecha_inicial':  fields.date('Fecha inicial', required = True),
+			'produccion_fecha_final':  fields.date('Fecha final', required = True),
+			'produccion_notas': fields.text('Notas'),
+			'produccion_re_ter_unidad': fields.char('Reporta Terminio de la Unidad', required=True, size = 80),	
+	  		'calidad_fecha_inicial':  fields.date('Fecha inicial', required = True),
+			'calidad_fecha_final':  fields.date('Fecha final', required = True),
+			'calidad_notas': fields.text('Notas'),
+			'calidad_re_li_unidad': fields.char('Reporta Terminio de la Unidad', required=True, size = 80),	
+			'calidad_fecha_liberacion':  fields.date('Fecha de Liberacion', required = True),
+	  		'calidad_pri_inpeccion': fields.boolean('Primera Inspeccion'),
+	  		'calidad_liberada': fields.boolean('Liberada')
+	  		
 	           }
 	_defaults = {
 				#'fecha' : lambda *a: time.strftime('%Y-%m-%d')
 				'state'  : 'draft', 
+
 				}
 
 mrp_service_all()
@@ -87,6 +116,12 @@ mrp_service_all()
 class mrp_service_lines(osv.osv):
 	_name = 'mrp_service.lines'
 	_description = 'facturas'
+
+	
+	def cambio(self, cr, uid, ids,facproducto):
+		return {facproducto*2}
+
+	
 	_columns = {
 			'factu_id': fields.many2one('mrp_service.all','ID Referencia'),
 			'facproducto': fields.many2one('product.product','Producto'),	
@@ -95,4 +130,19 @@ class mrp_service_lines(osv.osv):
             'facimpuestos': fields.many2many('account.tax', 'repair_operation_line_tax', 'repair_operation_line_id', 'tax_id', 'Impuesto'),
             'facafacturar':fields.boolean('A facturar'),
             'facsubtotal':fields.float('Subtotal')
-	   }
+	          }
+
+mrp_service_lines()
+
+class mrp_service_produccion(osv.osv):
+	_name = 'mrp_service.produccion'
+	_description = 'Orden de produccion'
+
+
+	_columns = {
+			'produccion_id': fields.many2one('mrp_service.all','ID Referencia'),
+			'produccion_catalogo': fields.many2one('product.product','Producto'),
+			
+	          }
+
+mrp_service_produccion()
