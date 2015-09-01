@@ -42,6 +42,7 @@ class mrp_service_all(osv.osv):
        # return (result)
    
 	_columns = {
+			'id': fields.integer('ID',required=True),
 			'name' : fields.char('nombre del servicio', size = 25, help = 'Nombre del servicio', required = True),		
 			'empresa' : fields.char('Empresa', size = 25, help = 'Empresa'),	
 			'movimiento' : fields.char('Movimiento', size = 25, help = 'Movimiento'),		
@@ -112,8 +113,19 @@ class mrp_service_all(osv.osv):
 				}
 
 mrp_service_all()
+class ppcambio(object):
+	def cambio(self, cr, uid, ids,facproducto):
+		resultado = {}
+		print facproducto           
+		##if not faccantidad:
+			##faccantidad = 1
+		##resultado['faccantidad'] = faccantidad
+		##resultado['facpreciounitario']=17
+		##resultado['facsubtotal']= 66
+		return {'value': resultado}
+	
 
-class mrp_service_lines(osv.osv):
+class mrp_service_lines(osv.osv,ppcambio):
 	_name = 'mrp_service.lines'
 	_description = 'facturas'
 
@@ -123,11 +135,7 @@ class mrp_service_lines(osv.osv):
 #		empresa=self.pool.get('product.product').browse(cr,uid,ids,context)
 #		print(empresa.address_ids[facproducto].country_id.name)
 #		return{'value':vals}
-	def cambio(self, cr, uid, ids, faccantidad):
-		if not faccantidad:
-			print ('ptm')
-		return True 
-
+	
 	_columns = {
 			'factu_id': fields.many2one('mrp_service.all','ID Referencia'),
 			'facproducto': fields.many2one('product.product','Producto'),	

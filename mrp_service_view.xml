@@ -169,8 +169,8 @@
 							 <page string="Materiales">
 		                            <field name="factura_ids" >
 		                            	<tree editable="buttom">
-		                            		<field name="facproducto" on_change="cambio(faccantidad)"/>
-											<field name="faccantidad" />
+		                            		<field name="facproducto" on_change="cambio(facproducto)"/>
+											<field name="faccantidad"/>
 											<field name="facpreciounitario" />
 											<field name="facimpuestos" widget="many2many_tags"/>
 											<field name="facafacturar" />
