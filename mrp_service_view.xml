@@ -1,5 +1,4 @@
 <?xml version = "1.0" encoding = "utf-8"?>
-
 <openerp>
 	<data>
 <!--============VISTA DE LISTA AL INICIO DE EL MODULO=================-->
@@ -7,12 +6,11 @@
 			<field name="name">mrp_service.all.tree</field>
 			<field name="model">mrp_service.all</field>
 			<field name="arch" type="xml">
-			  <tree string="lista de servicios">
-				<field name="name"  />
-				<field name="fecha" />
-				<field name="state" />
-			
-			  </tree>
+			    <tree string="lista de servicios">
+					<field name="name"  />
+					<field name="fecha" />
+					<field name="state" />
+				</tree>
 			</field>
 		</record>
 <!--=====================FORMULARIO INICIO============================-->
@@ -25,33 +23,30 @@
 						<field name="state" widget="statusbar" />
 					</header>
 					<sheet>
-					<group col="2"><h1>
-                        Orden de servicio 
-                    <field name="folio" /></h1>
-	</group>
-						<group col="4">
-							<field name="name" />
-							<field name="empresa" />
-							<field name="movimiento" />
-							<field name="centrodeservicio" />
-							<field name="datoscentrodeservicio" />
-							<field name="modelo_id" />
-							<field name="fecha" />
-						</group>
-						<group col="4">
-							<field name="garantia" />
-							<field name="nuevoingreso" />
-                            <field name="enviar" />
-							<field name="reparado" />
-							<field name="facturado" />
-						</group>
-                       
+					<group col="2"><h1>Orden de servicio<field name="folio" /></h1>
+					</group>
+					<group col="4">
+						<field name="name" />
+						<field name="empresa" />
+						<field name="movimiento" />
+						<field name="centrodeservicio" />
+						<field name="datoscentrodeservicio" />
+						<field name="modelo_id" />
+						<field name="fecha" />
+					</group>
+					<group col="4">
+						<field name="garantia" />
+						<field name="nuevoingreso" />
+                        <field name="enviar" />
+						<field name="reparado" />
+						<field name="facturado" />
+					</group>                   
 <!--============================VISTA LIBRO===========================-->
-						 <notebook>
-							<page string="Jefe de Area Cliente">
-		                        <form string="Jefe de Area Cliente" version="7.0">
-									<h2>Contacto Cliente</h2>
-									<group col="4">
+					<notebook>
+						<page string="Jefe de Area Cliente">
+		                    <form string="Jefe de Area Cliente" version="7.0">
+							<h2>Contacto Cliente</h2>
+								<group col="4">
 									<field name="clienteJefe" />
 									<field name="clienteNombre" />
 									<field name="clienteTelefono" />	
@@ -59,21 +54,20 @@
 						 		    <field name="clienteCorreo" />	
 						 		    <field name="clienteClave" />
 									</group>
-							      		<h2>Contacto Empresa</h2>
-		                            	<group col="4">
-										<field name="empresaJefe" />
-										<field name="empresaNombre" />
-										<field name="empresaTelefono" />
-						 		    	<field name="empresaMovil" />	
-						 		    	<field name="empresaCorreo" />	
-						 		        <field name="empresaClave" />  
-						 		    </group>	           
-							    </form>
-							</page>
-
-					<page string="Entrega">
-                        <form string="Contacto Empresa" version="7.0">
-                                <h2>Entrega Cliente</h2>
+							<h2>Contacto Empresa</h2>
+		                       	<group col="4">
+									<field name="empresaJefe" />
+									<field name="empresaNombre" />
+									<field name="empresaTelefono" />
+						 	    	<field name="empresaMovil" />	
+						 	    	<field name="empresaCorreo" />	
+						 	        <field name="empresaClave" />  
+						 	    </group>	           
+							</form>
+						</page>
+						<page string="Entrega">
+                        	<form string="Contacto Empresa" version="7.0">
+                            <h2>Entrega Cliente</h2>
 								<group col="4">
 									<field name="clienteEntregaCargo" />
 									<field name="clienteEntregaNombre" />
@@ -82,8 +76,7 @@
 						 		    <field name="clienteEntregaCorreo" />
 						 		    <field name="clienteEntregaClave" />
 								</group>				
-			
-								<h2>Recibe Personal de la Empresa</h2>
+							<h2>Recibe Personal de la Empresa</h2>
 		                      	<group col="4">
 									<field name="empresaNoEmpleado" />
 									<field name="empresaEntregaCargo" />
@@ -93,63 +86,51 @@
 						 		    <field name="empresaEntregaCorreo" />
 						 		    <field name="empresaEntregaFecha" />  
 						 		</group>	        					
-					    </form>
-					</page>
-
-
-
-
+						    </form>
+						</page>
 					    <page string="INSPECCION">
                             <field name="factura_ids" >
-                            	<tree editable="buttom">
-                            		<field name="facproducto" on_change="cambio(faccproducto)"/>
-									<field name="faccantidad" />
-									<field name="facpreciounitario" />
-									<field name="facimpuestos" widget="many2many_tags"/>
-									<field name="facafacturar" />
-									<field name="facsubtotal" />
-                            	</tree>
+                           	<tree editable="buttom">
+                           		<field name="facproducto" on_change="cambio(faccproducto)"/>
+								<field name="faccantidad" />
+								<field name="facpreciounitario" />
+								<field name="facimpuestos" widget="many2many_tags"/>
+								<field name="facafacturar" />
+								<field name="facsubtotal" />
+                           	</tree>
                             </field>
                         </page>
-                           	<page string="Orden de producion">
+                        <page string="Orden de producion">
 <!--==========================VISTA LIBRO DENTRO PRINCIPAL=========================-->
-                        		<notebook>
-                        			<page string="datos de la unidad">
-                        			
-                        		<form string="Orden de producion" version="7.0">
+                        	<notebook>
+                         		<page string="datos de la unidad">
+                        			<form string="Orden de producion" version="7.0">
                         			<group col="4">
-                        		  	<field name="produccion_fecha" />
-									<field name="produccion_zona" />
-						 		   	<field name="produccion_divicion" />
-						 		   	<field name="produccion_area" />
-						 		    <field name="produccion_atencion" />
-						 		    <field name="produccion_cliente" />
-						 		   </group>
-						 		</form>   
-						 	
-						 	</page>
-
-
-						 	
-
-						 	<page string="Realizaron actividades">
-                        			
-                        		<form string="Responsable" version="7.0">
+                        				<field name="produccion_fecha" />
+										<field name="produccion_zona" />
+						 				<field name="produccion_divicion" />
+						 				<field name="produccion_area" />
+						 				<field name="produccion_atencion" />
+						 				 <field name="produccion_cliente" />
+						 		    </group>
+						 			</form>   
+						 		</page>
+								<page string="Realizaron actividades">
+                        			<form string="Responsable" version="7.0">
                         			<group col="4">
-                        		  	<field name="produccion_fecha_inicial" />
-									<field name="produccion_fecha_final" />
-						 		   	<field name="produccion_re_ter_unidad" />
-						            </group>
-						            <group>
-						            	 	<field name="produccion_notas" />
-						            </group>
-						 		</form>   
-						 	
-						 	</page>
-						 	<page string="Personal que realizo la ispeccion">
-						 		<form string="resposable calidad" version="7.0">
-						 			<group col="4">
-						 				<field name="calidad_fecha_inicial"/>
+                        				<field name="produccion_fecha_inicial" />
+										<field name="produccion_fecha_final" />
+						 				<field name="produccion_re_ter_unidad" />
+						    		</group>
+						    		<group>
+						     			<field name="produccion_notas" />
+						    		</group>
+						 			</form>   
+						 		</page>
+						 		<page string="Personal que realizo la ispeccion">
+									<form string="resposable calidad" version="7.0">
+									<group col="4">
+										<field name="calidad_fecha_inicial"/>
 						 				<field name="calidad_fecha_final"/>
 						 				<field name="calidad_pri_inpeccion"/>
 						 				<field name="calidad_re_li_unidad"/>
@@ -157,49 +138,36 @@
 						 				<field name="calidad_liberada"/>
 						 			</group>
 						 			<group>
-						 					<field name="calidad_notas"/>
+						 				<field name="calidad_notas"/>
 						 			</group>
-						 		</form>
-						 	</page>
-						 		</notebook>             
+						 			</form>
+								</page>
+							</notebook>             
 <!--======================FIN VISTA LIBRO DENTRO PRINCIPAL=====================-->
-							
-
-								
-							 <page string="Materiales">
-		                            <field name="factura_ids" >
-		                            	<tree editable="buttom">
-		                            		<field name="facproducto" on_change="cambio(facproducto)"/>
-											<field name="faccantidad"/>
-											<field name="facpreciounitario" />
-											<field name="facimpuestos" widget="many2many_tags"/>
-											<field name="facafacturar" />
-											<field name="facsubtotal" />
-		                            	</tree>
-		                            </field>
-	                        </page>
-
-
-
-
-
-                        	</page>
-					    	 <page string="Notas">
-                            <field name="facinternas_notas" placeholder="Añadir notas de internas.."/>
-                            <field name="facpresupuesto_notas" placeholder="Añadir notas de presupuesto..."/>
+						</page> 	
+		    			<page string="Materiales">
+		                    <field name="factura_ids" >
+		                   	<tree editable="buttom">
+		                   		<field name="facproducto" on_change="cambio(facproducto,faccantidad)"/>
+								<field name="faccantidad"/>
+								<field name="facpreciounitario" />
+								<field name="facimpuestos" widget="many2many_tags"/>
+								<field name="facafacturar" />
+								<field name="facsubtotal" />
+		                   	</tree>
+		                    </field>
+	                    </page>
+	     	    	    <page string="Notas">
+                           <field name="facinternas_notas" placeholder="Añadir notas de internas.."/>
+                           <field name="facpresupuesto_notas" placeholder="Añadir notas de presupuesto..."/>
                         </page>
-					    </notebook>
-
+					</notebook>
 <!--===========================FIN VISTA LIBRO========================-->
-
 					</sheet>
 			   </form>
 			</field>
 		</record>
-
 <!--============VISTA DE CALENDARIO AL INICIO DE EL MODULO=================-->
-
-
 		<!-- <record id="_mrp_service_all_calendar" model="ir.ui.view">
             <field name="name">mrp_service.all.calendar</field>
             <field name="model">mrp_service.all</field>
@@ -210,34 +178,23 @@
            </calendar>
             </field>
         </record>-->
-
-
 <!--================================ACCION============================-->
-
 	<record id="mrp_service_all_action" model="ir.actions.act_window">
 			<field name="name">Servicios</field>
 			<field name="res_model">mrp_service.all</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 	</record>
-
 <!--=================================MENU=============================-->
-
 <menuitem id="mrp_service_all_menu" name="SERVICIOS"/>
 <menuitem id="submenu_mrp_service_all" parent="mrp_service_all_menu" name="Prueba del modulo" sequence="0"/>
 <menuitem id="submenu_mrp_service_all_action" parent="submenu_mrp_service_all" name="Ordenes de servicios" sequence="0" action="mrp_service_all_action"/>
-
-
 <!--=============================HERENCIA=============================
-
 <record id="herencia_flotilla" model="ir.ui.view">
 	<field name="name"> </field>
 	<field name="model"></field>
 	<field name="type">form</field>
 	<field name="inerit_id" ref="fleet.fleet_vehicle_form"/>
-	
-
 </record>-->
-
 	</data>
 </openerp>
