@@ -70,7 +70,6 @@ class mrp_service_all(osv.osv):
 		'facturado': fields.boolean('Facturado'),
 		'facinternas_notas': fields.text('Notas internas'),
         'facpresupuesto_notas': fields.text('Notas Presupuesto'),
-		'state': fields.selection([('draft','Borrador'),('confirmed','Confirmado'),('cancel','Cancelado')], 'Estado', readonly = True),
 		'factura_ids': fields.one2many('mrp_service.lines','factu_id','Facturacion de los servicios'),
 	    'modelo_id': fields.many2one('fleet.vehicle','Modelo',required = True),
 	    # 'pricelist_id': fields.many2one('product.pricelist', 'Pricelist', help='Pricelist of the selected partner.'),
@@ -91,12 +90,34 @@ class mrp_service_all(osv.osv):
 		'calidad_re_li_unidad': fields.many2one('hr.employee','Reporta Terminio de la Unidad', required=True),	
 		'calidad_fecha_liberacion':  fields.date('Fecha de Liberacion', required = True),
 	  	'calidad_pri_inpeccion': fields.boolean('Primera Inspeccion'),
+		'state': fields.selection([('one','Borrador'),('two','Inspeccion'),('three','Facturacion'),('four','Autorizada'),('five','Orden de trabajo'),('six','Orden de calidad'),('final','Cancelado')], 'Estado', readonly = True),
 	  	'calidad_liberada': fields.boolean('Liberada')
 	  	 }
 	_defaults = {
 		#'fecha' : lambda *a: time.strftime('%Y-%m-%d')
-		'state'  : 'draft', 
+		'state'  : 'one', 
 		}
+	def one(self, cr, uid, ids,context=None):
+		self.write(cr, uid, ids, {'state':'one'},context=None)
+		return True
+	def two(self, cr, uid, ids,context=None):
+		self.write(cr, uid, ids, {'state':'two'},context=None)
+		return True
+	def three(self, cr, uid, ids,context=None):
+		self.write(cr, uid, ids, {'state':'three'},context=None)
+		return True
+	def four(self, cr, uid, ids,context=None):
+		self.write(cr, uid, ids, {'state':'four'},context=None)
+		return True
+	def five(self, cr, uid, ids,context=None):
+		self.write(cr, uid, ids, {'state':'five'},context=None)
+		return True
+	def six(self, cr, uid, ids,context=None):
+		self.write(cr, uid, ids, {'state':'six'},context=None)
+		return True
+	def final(self, cr, uid, ids,context=None):
+		self.write(cr, uid, ids, {'state':'final'},context=None)
+		return True
 mrp_service_all()
 
 class ppcambio(object):

@@ -20,6 +20,13 @@
 		   	<field name="arch" type="xml">
 				<form string="formulario servicios" version="7.0">
 					<header>
+						<button name="one" string="borrador" states="final" type="object"/>
+						<button name="two" string="Inspeccion" states="one" type="object"/>
+						<button name="three" string="Facturacion" states="two" type="object"/>
+						<button name="four" string="Facturacion Autorizada" states="three" type="object"/>
+						<button name="five" string="Oreden de trabajo" states="four" type="object"/>
+						<button name="six" string="Orden de calidad" states="five" type="object"/>
+						<button name="final" string="Cancelar" states="one,two,three,four,five,six" type="object"/>
 						<field name="state" widget="statusbar" />
 					</header>
 					<sheet>
