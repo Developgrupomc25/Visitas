@@ -26,6 +26,7 @@ from datetime import time, datetime,timedelta
 from openerp import tools
 from tools.translate import _
 
+
 class mrp_service_all(osv.osv):
 	_name = 'mrp_service.all'
 	_description = 'Todas las ordenes de servicio'
@@ -91,11 +92,16 @@ class mrp_service_all(osv.osv):
 		'calidad_fecha_liberacion':  fields.date('Fecha de Liberacion', required = True),
 	  	'calidad_pri_inpeccion': fields.boolean('Primera Inspeccion'),
 		'state': fields.selection([('one','Borrador'),('two','Inspeccion'),('three','Facturacion'),('four','Autorizada'),('five','Orden de trabajo'),('six','Orden de calidad'),('final','Cancelado')], 'Estado', readonly = True),
-	  	'calidad_liberada': fields.boolean('Liberada')
+	  	'calidad_liberada': fields.boolean('Liberada'),
+        'pricelist_id': fields.many2one('product.pricelist', 'Pricelist', help='Pricelist of the selected partner.'),
+	        
+        
+	  	
 	  	 }
 	_defaults = {
 		#'fecha' : lambda *a: time.strftime('%Y-%m-%d')
-		'state'  : 'one', 
+		'state'  : 'one',
+   		'pricelist_id': lambda self, cr, uid,context : self.pool.get('product.pricelist').search(cr, uid, [('type','=','sale')])[0]
 		}
 	def one(self, cr, uid, ids,context=None):
 		self.write(cr, uid, ids, {'state':'one'},context=None)
@@ -120,29 +126,49 @@ class mrp_service_all(osv.osv):
 		return True
 mrp_service_all()
 
+
+
 class ppcambio(object):
-	def cambio(self, cr, uid, ids,facproducto,faccantidad=0):
-		resultado = {}
-		print facproducto
-		print faccantidad           
-		if not faccantidad:
-			faccantidad = 1
-		resultado['faccantidad'] = faccantidad
-		return {'value': resultado}
+    def cambio(self, cr, uid, ids,pricelist,facproducto,faccantidad=0,total=0,partner_id=False,uom=False):
+        resultado = {}
+        print 'holallll'
+        print facproducto
+       	print faccantidad
+        print pricelist
+        print total
+        print 'esto es todo lo que impŕimo'
+        #print faccantidad
+        if not total:
+        	total = 0          
+        if not faccantidad:
+            faccantidad = 1
+        resultado['faccantidad'] = faccantidad
+        if facproducto:
+           product_obj = self.pool.get('product.product').browse(cr, uid, facproducto)
+           print product_obj
+        price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist],
+                           facproducto, faccantidad, partner_id, )[pricelist]
+        resultado.update({'facpreciounitario': price, 'facsubtotal': price*faccantidad})
+        
+        resultado['total'] = resultado['facsubtotal'] + total
+        print resultado['total']
+        return {'value': resultado}
 ppcambio()
 
 class mrp_service_lines(osv.osv,ppcambio):
 	_name = 'mrp_service.lines'
 	_description = 'facturas'
 	_columns = {
-		'factu_id': fields.many2one('mrp_service.all','ID Referencia'),
+		'factu_id': fields.many2one('mrp_service.all','ID Referencia',select=True),
 		'facproducto': fields.many2one('product.product','Producto'),	
         'faccantidad': fields.float('Cantidad',help = 'Cantidad',required=True),		
         'facpreciounitario': fields.float('Precio unitario', help = 'Precio unitario',	required=True),	
         'facimpuestos': fields.many2many('account.tax', 'repair_operation_line_tax', 'repair_operation_line_id', 'tax_id', 'Impuesto'),
         'facafacturar':fields.boolean('A facturar'),
-        'facsubtotal':fields.float('Subtotal')
+        'facsubtotal':fields.float('Subtotal'),
+        'total': fields.float('Total')        
         }
+   
 mrp_service_lines()
 
 class mrp_service_produccion(osv.osv):
