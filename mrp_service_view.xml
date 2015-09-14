@@ -40,8 +40,7 @@
 						<field name="datoscentrodeservicio" />
 						<field name="modelo_id" />
 						<field name="fecha" />
-						  <field
-                                name="pricelist_id" groups="product.group_sale_pricelist" />
+						<field name="pricelist_id" groups="product.group_sale_pricelist" />
 					</group>
 					<group col="4">
 						<field name="garantia" />
@@ -98,7 +97,7 @@
 						    </form>
 						</page>
 					    <page string="INSPECCION">
-                            <field name="factura_ids" >
+                        	<field name="factura_ids" >
                            	<tree editable="buttom">
                            		<field name="facproducto" on_change="cambio(parent.pricelist_id,facproducto,faccantidad,total)"/>
 								<field name="faccantidad" />
@@ -158,12 +157,13 @@
 		    			<page string="Materiales">
 		                    <field name="factura_ids" >
 		                   	<tree editable="buttom">
-		                  		<field name="facproducto" on_change="cambio(parent.pricelist_id,facproducto,faccantidad)"/>
+		                  		<field name="facproducto" on_change="cambio(parent.pricelist_id,facproducto,faccantidad,total)"/>
 								<field name="faccantidad"/>
 								<field name="facpreciounitario" />
 								<field name="facimpuestos" widget="many2many_tags"/>
 								<field name="facafacturar" />
 								<field name="facsubtotal" />
+								<field name="total"/>
 		                   	</tree>
 		                    </field>
 	                    </page>
