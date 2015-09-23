@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#
+#    
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2004-2010 Tiny SPRL (<http://tiny.be>).
 #
@@ -15,29 +15,31 @@
 #    GNU Affero General Public License for more details.
 #
 #    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.     
 #
 ##############################################################################
 
+import time
+from openerp.report import report_sxw
 
-from openerp import SUPERUSER_ID
-from openerp.osv import fields, osv, orm
-from datetime import time, datetime,timedelta
-from openerp import tools
-from tools.translate import _
+class order(report_sxw.rml_parse):
+    def __init__(self, cr, uid, name, context):
+        super(order, self).__init__(cr, uid, name, context=context)
+        self.localcontext.update({
+            'time': time,
+            'total': self.total,
+        })
 
+    #def total(self, repair):
+     #   total = 0.0
+      #  for operation in repair.operations:
+       #    total += operation.price_subtotal
+        #for fee in repair.fees_lines:
+         #  total += fee.price_subtotal
+        #total = total + repair.amount_tax
+        #return total
 
-class mrp_service_all(osv.osv):
-	_name = 'mrp_service.all'
-	_description = 'Todas las ordenes de servicio'
-	_columns = {
-		'id'        : fields.integer('ID',required=True),
-		'name'      : fields.char('nombre de quien visita', size = 25, help = 'Nombre del servicio', required = True),		
-        'visit'     : fields.many2one('hr.employee', 'Nombre a quien visita', size = 25, required = True),
-       #'reason': fields.char('Razon de la visita', size = 50, required = True),
-        'photo'     : fields.binary('Photo'),
-        'photo_card': fields.binary('Photo card'),
-        'photo_car' : fields.binary('Photo car'),    
+report_sxw.report_sxw('report.service.order','mrp.service','addons/mrp_service/report/order.rml',parser=order)
 
-    }
-mrp_service_all()
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+

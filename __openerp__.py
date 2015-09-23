@@ -19,12 +19,12 @@
 #
 ##############################################################################
 {
-	"name" : "Ordenes de servicio",
+	"name" : "Modulo de visitantes",
 	"version" : "1.0",
 	"author" : "Equipo de desarrollo MC",
 	"website" : "www.grupomc.com",
-	"category" : "Servicio",
-	"description": """Prueba de creacion de un nuevo modulo XD""",
+	"category" : "Visitas",
+	"description": """Prueba de creacion de un nuevo modulo """,
 	'data': [],
     'depends' : ['account'],
     'update_xml': ["mrp_service_view.xml",],
