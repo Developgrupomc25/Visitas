@@ -9,6 +9,7 @@
 			    <tree string="lista de servicios">
 					<field name="name"/>
 					<field name="visit"/>
+					<field name="date"/>
 					
 				</tree>
 			</field>
@@ -28,28 +29,43 @@
 					<group col="4">
 						<field name="name"/>
 						<field name="visit"/>
+						<field name="reason"/>
+						<field name="date"/>
 						
 					</group>
-					 <group colspan="2" col="1">
+				    <group colspan="2" col="1">
                        
                             <field name="photo" widget='image' nolabel="1"/>
-                       
+                    </group>
+                    <group col="4">   
                             <field name="photo_card" widget='image' nolabel="1"/>
-                          
+                     </group>
+                     <group col="4">     
                             <field name="photo_car" widget='image' nolabel="1"/>
-                        </group>
+                    </group>
 					
 				</sheet>
 			</form>
 		</field>
 	</record>
+<!--=========VISTA DE CALENDARIO AL INICIO DE EL MODULO=============-->
+		<record id="_mrp_service_all_calendar" model="ir.ui.view">
+            <field name="name">mrp_service.all.calendar</field>
+            <field name="model">mrp_service.all</field>
+            <field name="arch" type="xml">
+        <calendar color="name" date_start="date" string="VISITANTES">
+    	        <field name="name"/>
+				<field name="date"/>
+        </calendar>
+    </field>
+</record>
 
 <!--================================ACCION============================-->
 	<record id="mrp_service_all_action" model="ir.actions.act_window">
 			<field name="name">Servicios</field>
 			<field name="res_model">mrp_service.all</field>
 			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,form,calendar</field>
 	</record>
 <!--=================================MENU=============================-->
 <menuitem id="mrp_service_all_menu" name="Visitantes"/>
