@@ -19,6 +19,27 @@
 #
 ##############################################################################
 
-import mrp_service
-import report 
- 
+import time
+from openerp.report import report_sxw
+
+class order(report_sxw.rml_parse):
+    def __init__(self, cr, uid, name, context):
+        super(order, self).__init__(cr, uid, name, context=context)
+        self.localcontext.update({
+            'time': time,
+            'total': self.total,
+        })
+
+    #def total(self, repair):
+     #   total = 0.0
+      #  for operation in repair.operations:
+       #    total += operation.price_subtotal
+        #for fee in repair.fees_lines:
+         #  total += fee.price_subtotal
+        #total = total + repair.amount_tax
+        #return total
+
+report_sxw.report_sxw('report.service.order','mrp.service','addons/mrp_service/report/order.rml',parser=order)
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+

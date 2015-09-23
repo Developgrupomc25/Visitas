@@ -55,21 +55,21 @@
 		                    <form string="Jefe de Area Cliente" version="7.0">
 							<h2>Contacto Cliente</h2>
 								<group col="4">
-									<field name="clienteJefe" />
-									<field name="clienteNombre" />
+								<!--<field name="clienteJefe" />
 									<field name="clienteTelefono" />	
 						 		    <field name="clienteMovil" />
 						 		    <field name="clienteCorreo" />	
-						 		    <field name="clienteClave" />
+						 		    <field name="clienteClave" />-->
+						 		    <field name="clienteNombre" />
 									</group>
 							<h2>Contacto Empresa</h2>
 		                       	<group col="4">
-									<field name="empresaJefe" />
-									<field name="empresaNombre" />
+								<!--<field name="empresaJefe" />
 									<field name="empresaTelefono" />
 						 	    	<field name="empresaMovil" />	
 						 	    	<field name="empresaCorreo" />	
-						 	        <field name="empresaClave" />  
+						 	        <field name="empresaClave" /> -->
+						 	        <field name="empresaNombre" />
 						 	    </group>	           
 							</form>
 						</page>
@@ -77,26 +77,29 @@
                         	<form string="Contacto Empresa" version="7.0">
                             <h2>Entrega Cliente</h2>
 								<group col="4">
-									<field name="clienteEntregaCargo" />
+								<!--	<field name="clienteEntregaCargo" />
 									<field name="clienteEntregaNombre" />
 									<field name="clienteEntregaTelefono" />	
 						 		    <field name="clienteEntregaMovil" />
 						 		    <field name="clienteEntregaCorreo" />
-						 		    <field name="clienteEntregaClave" />
+						 		    <field name="clienteEntregaClave" />-->
+									<field name="clienteEntregaNombre" />
+
 								</group>				
 							<h2>Recibe Personal de la Empresa</h2>
 		                      	<group col="4">
-									<field name="empresaNoEmpleado" />
+								<!--<field name="empresaNoEmpleado" />
 									<field name="empresaEntregaCargo" />
 									<field name="empresaEntregaNombre" />
 						 		   	<field name="empresaEntregaTelefono" />
 						 		   	<field name="empresaEntregaMovil" />
 						 		    <field name="empresaEntregaCorreo" />
-						 		    <field name="empresaEntregaFecha" />  
+						 		    <field name="empresaEntregaFecha" /> --> 
+						 		    <field name="empresaEntregaNombre" />
 						 		</group>	        					
 						    </form>
 						</page>
-					    <page string="INSPECCION">
+					    <page string="Inspeccion" states="two">
                         	<field name="factura_ids" >
                            	<tree editable="buttom">
                            		<field name="facproducto" on_change="cambio(parent.pricelist_id,facproducto,faccantidad,total)"/>
