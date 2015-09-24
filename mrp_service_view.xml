@@ -30,10 +30,10 @@
 						<field name="state" widget="statusbar" />
 					</header>
 					<sheet>
-					<group col="2"><h1>Orden de servicio<field name="folio" /></h1>
+					<group col="2"><h1>Orden de Servicio<field name="folio" /></h1>
 					</group>
 					<group col="4">
-						<field name="name" />
+						<field name="name"/>
 						<field name="empresa" />
 						<field name="movimiento" />
 						<field name="centrodeservicio" />
@@ -112,10 +112,10 @@
                            	</tree>
                             </field>
                         </page>
-                        <page string="Orden de producion">
+                        <page string="Orden de Producion">
 <!--==========================VISTA LIBRO DENTRO PRINCIPAL=========================-->
                         	<notebook>
-                         		<page string="datos de la unidad">
+                         		<page string="Datos de la Unidad">
                         			<form string="Orden de producion" version="7.0">
                         			<group col="4">
                         				<field name="produccion_fecha" />
@@ -127,10 +127,10 @@
 						 		    </group>
 						 			</form>   
 						 		</page>
-								<page string="Realizaron actividades">
+								<page string="Realizaron Actividades">
                         			<form string="Responsable" version="7.0">
                         			<group col="4">
-                        				<field name="produccion_fecha_inicial" />
+                        				<!--<field name="produccion_fecha_inicial" />-->
 										<field name="produccion_fecha_final" />
 						 				<field name="produccion_re_ter_unidad" />
 						    		</group>
@@ -139,7 +139,7 @@
 						    		</group>
 						 			</form>   
 						 		</page>
-						 		<page string="Personal que realizo la ispeccion">
+						 		<page string="Personal que Realizo la Inspeccion">
 									<form string="resposable calidad" version="7.0">
 									<group col="4">
 										<field name="calidad_fecha_inicial"/>
@@ -199,9 +199,9 @@
 			<field name="view_mode">tree,calendar,form</field>
 	</record>
 <!--=================================MENU=============================-->
-<menuitem id="mrp_service_all_menu" name="SERVICIOS"/>
-<menuitem id="submenu_mrp_service_all" parent="mrp_service_all_menu" name="Prueba del modulo" sequence="0"/>
-<menuitem id="submenu_mrp_service_all_action" parent="submenu_mrp_service_all" name="Ordenes de servicios" sequence="0" action="mrp_service_all_action"/>
+<menuitem id="mrp_service_all_menu" name="Servicios"/>
+<menuitem id="submenu_mrp_service_all" parent="mrp_service_all_menu" name="Servicio" sequence="0"/>
+<menuitem id="submenu_mrp_service_all_action" parent="submenu_mrp_service_all" name="Ordenes de Servicios" sequence="0" action="mrp_service_all_action"/>
 <!--=============================HERENCIA=============================
 <record id="herencia_flotilla" model="ir.ui.view">
 	<field name="name"> </field>
