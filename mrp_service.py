@@ -49,10 +49,10 @@ class mrp_service_all(osv.osv):
         'date'        : fields.datetime("Hora de entrada"),
         'equipo'      : fields.char("Equipo o herramienta", size =25),
         #'photo'     : fields.binary('Photo'),
-        'image'       : fields.binary("Photo",
+        'image'       : fields.binary("Photo", required = True,
             help="This field holds the image used as photo for the visits, limited to 1024x1024px."),
         'image_medium': fields.function(_get_image, fnct_inv=_set_image,
-            string="Medium-sized photo", type="binary", multi="_get_image",
+            string="photo", type="binary", multi="_get_image",
             store = {
                 'mrp_service': (lambda self, cr, uid, ids, c={}: ids, ['image'], 10),
             },

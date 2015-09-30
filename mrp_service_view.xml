@@ -38,15 +38,15 @@
 					
 				    <group>
                        
-                            <field name="image_medium" widget='image' nolabel="1"/>
+                            <field name="image_medium" widget='image' class="oe_left oe_avatar"/>
                     </group>
                     <group>
                        
-                            <field name="image_small" widget='image' nolabel="1"/>
+                            <field name="image_small" widget='image' class="oe_left oe_avatar"/>
                     </group>
                     <group>
                        
-                            <field name="image_small" widget='image' nolabel="1"/>
+                            <field name="image_small" widget='image' class="oe_left oe_avatar"/>
                     </group>
                     
 					</group>
