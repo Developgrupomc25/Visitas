@@ -19,6 +19,6 @@
 #
 ##############################################################################
 
-import mrp_service
+import mrp_visitas
 import report 
  

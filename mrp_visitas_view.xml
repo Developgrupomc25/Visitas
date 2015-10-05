@@ -2,9 +2,9 @@
 <openerp>
 	<data>
 <!--============VISTA DE LISTA AL INICIO DE EL MODULO=================-->
-		<record id="mrp_service_all_tree" model="ir.ui.view">
-			<field name="name">mrp_service.all.tree</field>
-			<field name="model">mrp_service.all</field>
+		<record id="mrp_visitas_all_tree" model="ir.ui.view">
+			<field name="name">mrp_visitas.all.tree</field>
+			<field name="model">mrp_visitas.all</field>
 			<field name="arch" type="xml">
 			    <tree string="lista de visitas">
 					<field name="name"/>
@@ -16,9 +16,9 @@
 			</field>
 		</record>
 <!--====================FORMULARIO INICIO==========================-->
-		<record id="mrp_service_all_form" model="ir.ui.view">
-			<field name="name">mrp_service.all.form</field>
-			<field name="model">mrp_service.all</field>
+		<record id="mrp_visitas_all_form" model="ir.ui.view">
+			<field name="name">mrp_visitas.all.form</field>
+			<field name="model">mrp_visitas.all</field>
 		   	<field name="arch" type="xml">
 				<form string="formulario visitas" version="7.0">
 					<header></header>
@@ -62,9 +62,9 @@
 		</field>
 	</record>
 <!--=========VISTA DE CALENDARIO AL INICIO DE EL MODULO=============-->
-		<record id="_mrp_service_all_calendar" model="ir.ui.view">
-            <field name="name">mrp_service.all.calendar</field>
-            <field name="model">mrp_service.all</field>
+		<record id="_mrp_visitas_all_calendar" model="ir.ui.view">
+            <field name="name">mrp_visitas.all.calendar</field>
+            <field name="model">mrp_visitas.all</field>
             <field name="arch" type="xml">
         <calendar color="name" date_start="date" string="VISITANTES">
     	        <field name="name"/>
@@ -74,16 +74,16 @@
 </record>
 
 <!--================================ACCION============================-->
-	<record id="mrp_service_all_action" model="ir.actions.act_window">
+	<record id="mrp_visitas_all_action" model="ir.actions.act_window">
 			<field name="name">Visitas</field>
-			<field name="res_model">mrp_service.all</field>
+			<field name="res_model">mrp_visitas.all</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form,calendar</field>
 	</record>
 <!--=================================MENU=============================-->
-<menuitem id="mrp_service_all_menu" name="Visitantes"/>
-<menuitem id="submenu_mrp_service_all" parent="mrp_service_all_menu" name="Visitantes" sequence="0"/>
-<menuitem id="submenu_mrp_service_all_action" parent="submenu_mrp_service_all" name="visitas" sequence="0" action="mrp_service_all_action"/>
+<menuitem id="mrp_visitas_all_menu" name="Visitantes"/>
+<menuitem id="submenu_mrp_visitas_all" parent="mrp_visitas_all_menu" name="Visitantes" sequence="0"/>
+<menuitem id="submenu_mrp_visitas_all_action" parent="submenu_mrp_visitas_all" name="visitas" sequence="0" action="mrp_visitas_all_action"/>
 
 	</data>
 </openerp>

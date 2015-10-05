@@ -27,9 +27,9 @@ from openerp import tools
 from tools.translate import _
 
 
-class mrp_service_all(osv.osv):
-    _name = 'mrp_service.all'
-    _description = 'Todas las ordenes de servicio'
+class mrp_visitas_all(osv.osv):
+    _name = 'mrp_visitas.all'
+    _description = 'Todas las visitas'
 
     def _get_image(self, cr, uid, ids, name, args, context=None):
         result = dict.fromkeys(ids, False)
@@ -53,7 +53,7 @@ class mrp_service_all(osv.osv):
         'image_medium': fields.function(_get_image, fnct_inv=_set_image,
             string="", type="binary", multi="_get_image",
             store = {
-                'mrp_service': (lambda self, cr, uid, ids, c={}: ids, ['image'], 10),
+                'mrp_visitas': (lambda self, cr, uid, ids, c={}: ids, ['image'], 10),
             },
             help=". It is automatically "\
                  "resized as a 64x64px image, with aspect ratio preserved. "\
@@ -61,7 +61,7 @@ class mrp_service_all(osv.osv):
         'image_small'  : fields.function(_get_image, fnct_inv=_set_image,
             string="", type="binary", multi="_get_image",
             store = {
-                'mrp_service': (lambda self, cr, uid, ids, c={}: ids, ['image'], 10),
+                'mrp_visitas': (lambda self, cr, uid, ids, c={}: ids, ['image'], 10),
             },
             help=". It is automatically "\
                  "resized as a 64x64px image, with aspect ratio preserved. "\
@@ -72,7 +72,7 @@ class mrp_service_all(osv.osv):
         'image_medium': fields.function(_get_image, fnct_inv=_set_image,
             string="", type="binary", multi="_get_image",
             store = {
-                'mrp_service': (lambda self, cr, uid, ids, c={}: ids, ['image_card'], 10),
+                'mrp_visitas': (lambda self, cr, uid, ids, c={}: ids, ['image_card'], 10),
             },
             help=". It is automatically "\
                  "resized as a 64x64px image_card, with aspect ratio preserved. "\
@@ -80,7 +80,7 @@ class mrp_service_all(osv.osv):
         'image_small'  : fields.function(_get_image, fnct_inv=_set_image,
             string="", type="binary", multi="_get_image",
             store = {
-                'mrp_service': (lambda self, cr, uid, ids, c={}: ids, ['image_card'], 10),
+                'mrp_visitas': (lambda self, cr, uid, ids, c={}: ids, ['image_card'], 10),
             },
             help=". It is automatically "\
                  "resized as a 64x64px image_card, with aspect ratio preserved. "\
@@ -91,7 +91,7 @@ class mrp_service_all(osv.osv):
         'image_medium': fields.function(_get_image, fnct_inv=_set_image,
             string="", type="binary", multi="_get_image",
             store = {
-                'mrp_service': (lambda self, cr, uid, ids, c={}: ids, ['image'], 10),
+                'mrp_visitas': (lambda self, cr, uid, ids, c={}: ids, ['image'], 10),
             },
             help=". It is automatically "\
                  "resized as a 64x64px image, with aspect ratio preserved. "\
@@ -99,7 +99,7 @@ class mrp_service_all(osv.osv):
         'image_small'  : fields.function(_get_image, fnct_inv=_set_image,
             string="", type="binary", multi="_get_image",
             store = {
-                'mrp_service': (lambda self, cr, uid, ids, c={}: ids, ['image'], 10),
+                'mrp_visitas': (lambda self, cr, uid, ids, c={}: ids, ['image'], 10),
             },
             help=" It is automatically "\
                  "resized as a 64x64px image, with aspect ratio preserved. "\
@@ -110,7 +110,7 @@ class mrp_service_all(osv.osv):
         'image_medium': fields.function(_get_image, fnct_inv=_set_image,
             string="", type="binary", multi="_get_image",
             store = {
-                'mrp_service': (lambda self, cr, uid, ids, c={}: ids, ['image_card'], 10),
+                'mrp_visitas': (lambda self, cr, uid, ids, c={}: ids, ['image_card'], 10),
             },
             help=" It is automatically "\
                  "resized as a 64x64px image_card, with aspect ratio preserved. "\
@@ -118,7 +118,7 @@ class mrp_service_all(osv.osv):
         'image_small'  : fields.function(_get_image, fnct_inv=_set_image,
             string="", type="binary", multi="_get_image",
             store = {
-                'mrp_service': (lambda self, cr, uid, ids, c={}: ids, ['image_car'], 10),
+                'mrp_visitas': (lambda self, cr, uid, ids, c={}: ids, ['image_car'], 10),
             },
             help=" It is automatically "\
                  "resized as a 64x64px image_car, with aspect ratio preserved. "\
@@ -126,4 +126,4 @@ class mrp_service_all(osv.osv):
 
         
     }
-mrp_service_all()
+mrp_visitas_all()

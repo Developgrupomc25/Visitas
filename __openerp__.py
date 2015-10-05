@@ -27,7 +27,7 @@
 	"description": """Prueba de creacion de un nuevo modulo """,
 	'data': [],
     'depends' : ['account'],
-    'update_xml': ["mrp_service_view.xml",],
+    'update_xml': ["mrp_visitas_view.xml",],
 	'init_xml' : [ ],
 	'demo_xml' : [ ],
 	'instalable':  True,

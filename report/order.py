@@ -39,7 +39,7 @@ class order(report_sxw.rml_parse):
         #total = total + repair.amount_tax
         #return total
 
-report_sxw.report_sxw('report.service.order','mrp.service','addons/mrp_service/report/order.rml',parser=order)
+report_sxw.report_sxw('report.visitas.order','mrp.visitas','addons/mrp_visitas/report/order.rml',parser=order)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 
